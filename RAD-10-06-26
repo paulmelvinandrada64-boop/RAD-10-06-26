@@ -1,0 +1,99 @@
+# RAD-10-06-26
+ACT 1
+import java.util.Scanner;
+
+public class PersonalInfo {
+    public static void main(String[] args) {
+Scanner input = new Scanner(System.in);
+        System.out.println("=== Personal Information ===");
+        
+        // Inputs with correct data types
+        System.out.print("Enter your name: ");
+        String name = input.nextLine();
+        
+        System.out.print("Enter your age: ");
+        int age = input.nextInt();
+        input.nextLine(); // consume leftover newline
+        
+        System.out.print("Enter your address: ");
+        String address = input.nextLine();
+        
+        System.out.print("Enter your weight (kg): ");
+        double weight = input.nextDouble();
+        
+        System.out.print("Enter your height (meters): ");
+        double height = input.nextDouble();
+        
+        // Output in sentence form
+        System.out.println("\n--- Your Details ---");
+        System.out.println("My name is " + name + ". I am " + age + " years old. I live at " + address + ".");
+        System.out.println("My weight is " + weight + " kilograms and my height is " + height + " meters.");
+        
+        input.close();
+    }
+}
+
+ACT 2
+import java.util.Scanner;
+
+public class Calculator {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        String again;
+        
+        System.out.println("=== Arithmetic Calculator ===");
+        
+        do {
+            // Enter values X and Y
+            System.out.print("\nEnter value of X: ");
+            double x = input.nextDouble();
+            
+            System.out.print("Enter value of Y: ");
+            double y = input.nextDouble();
+            
+            // Choose operator
+            System.out.println("\nAvailable Operators: +  -  *  /");
+            System.out.print("Enter operator: ");
+            char op = input.next().charAt(0);
+            
+            double result = 0;
+            boolean valid = true;
+            
+            // Switch case for operations
+            switch (op) {
+                case '+':
+                    result = x + y;
+                    System.out.println("Result: " + x + " + " + y + " = " + result);
+                    break;
+                case '-':
+                    result = x - y;
+                    System.out.println("Result: " + x + " - " + y + " = " + result);
+                    break;
+                case '*':
+                    result = x * y;
+                    System.out.println("Result: " + x + " * " + y + " = " + result);
+                    break;
+                case '/':
+                    if (y == 0) {
+                        System.out.println("Error: Cannot divide by zero!");
+                        valid = false;
+                    } else {
+                        result = x / y;
+                        System.out.println("Result: " + x + " / " + y + " = " + result);
+                    }
+                    break;
+                default:
+                    System.out.println("Error: Invalid operator! Use +, -, *, or /");
+                    valid = false;
+            }
+            
+            // Ask to repeat
+            System.out.print("\nCalculate again? (yes/no): ");
+            again = input.next();
+            
+        } while (again.equalsIgnoreCase("yes"));
+        
+        System.out.println("Program ended. Thank you!");
+        input.close();
+    }
+}
